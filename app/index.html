@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio — Make Your Own GTA 6-Style Cover</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VC</span>
+    <div>
+      <h1>Vice Cover Studio</h1>
+      <p class="tagline">Build a sunset-soaked cover in the style of a Vice City poster. Offline, free, no uploads.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="exportBtn" class="btn primary" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="stage-col">
+    <div id="dropZone" class="stage" title="Drop a photo here, or use the upload button">
+      <canvas id="preview" width="960" height="540" aria-label="Cover preview"></canvas>
+      <div id="dropHint" class="drop-hint">Drop a photo here</div>
+    </div>
+    <p class="hint">Drag on the cover to pan the selected panel's photo. Click a panel to select it.</p>
+    <div class="panel-bar" role="group" aria-label="Select panel">
+      <span class="bar-label">Panel</span>
+      <button class="chip panel-chip is-active" data-panel="0" type="button">1</button>
+      <button class="chip panel-chip" data-panel="1" type="button">2</button>
+      <button class="chip panel-chip" data-panel="2" type="button">3</button>
+      <button id="resetPanBtn" class="btn small" type="button">Reset pan / zoom</button>
+    </div>
+    <div class="slider-row">
+      <label for="zoomRange">Zoom <span id="zoomVal">100%</span></label>
+      <input id="zoomRange" type="range" min="100" max="300" value="100" step="1">
+    </div>
+  </section>
+
+  <aside class="controls">
+    <section class="card">
+      <h2>Photos</h2>
+      <div class="upload-row">
+        <label class="btn" for="fileInput">Upload photo</label>
+        <input id="fileInput" type="file" accept="image/*" multiple hidden>
+        <span class="fine">JPG / PNG. Photos stay on your machine — never uploaded.</span>
+      </div>
+      <div id="photoStrip" class="photo-strip" aria-label="Photo library"></div>
+      <button id="fillAllBtn" class="btn small" type="button">Fill all panels with selected photo</button>
+    </section>
+
+    <section class="card">
+      <h2>Layout</h2>
+      <div class="seg" id="layoutSeg" role="group" aria-label="Layout">
+        <button class="seg-btn is-active" data-layout="diagonal" type="button">Diagonal · 3 panels</button>
+        <button class="seg-btn" data-layout="duo" type="button">Duo split</button>
+        <button class="seg-btn" data-layout="hero" type="button">Single hero</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Colour grade</h2>
+      <div class="seg" id="gradeSeg" role="group" aria-label="Colour grade">
+        <button class="seg-btn is-active" data-grade="sunset" type="button">Vice City sunset</button>
+        <button class="seg-btn" data-grade="neon" type="button">Neon</button>
+        <button class="seg-btn" data-grade="noir" type="button">Noir</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Captions</h2>
+      <label class="field">
+        <span>Main caption</span>
+        <input id="captionInput" type="text" value="SUNSET HEIST" maxlength="24" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>Sub-caption</span>
+        <input id="subInput" type="text" value="VICE CITY · 2026" maxlength="40" autocomplete="off">
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>Export size</h2>
+      <div class="seg" id="sizeSeg" role="group" aria-label="Export size">
+        <button class="seg-btn is-active" data-size="1920x1080" type="button">1920 × 1080</button>
+        <button class="seg-btn" data-size="1080x1350" type="button">1080 × 1350</button>
+        <button class="seg-btn" data-size="1080x1080" type="button">1080 × 1080</button>
+      </div>
+      <button id="exportBtn2" class="btn primary wide" type="button">Export PNG</button>
+      <p class="fine">Exports the exact cover at full resolution as a PNG download.</p>
+    </section>
+
+    <p class="fine credit">Fan-made cover tool. Not affiliated with Rockstar Games. No Rockstar artwork, logos or fonts are used. Typeface: Anton (SIL Open Font License 1.1), bundled under <code>app/fonts/</code>. Sample photos are kit-provided or AI-generated.</p>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
